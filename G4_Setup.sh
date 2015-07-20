@@ -14,6 +14,6 @@ set MYGEANT3 = /data/users/eno/geant4.10.01.p02
 
 cd $MYGEANT/bin
 pwd
-csh geant4.csh
+source geant4.csh
 cd $MYLOCATION
 
