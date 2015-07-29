@@ -63,7 +63,7 @@ class B4aEventAction : public G4UserEventAction
   //
   // where we store energies deposited by particles into the calorimeter absorber material
     G4double  fEnergyAbs;
-  // where we store energies deposited by particles into the calorimeter active material
+  // where we store energies deposited by charged particles into the calorimeter active material
     G4double  fEnergyGap;
   // where we store the total path length of particles in the absorber
     G4double  fTrackLAbs; 
