@@ -55,9 +55,19 @@ class B4aEventAction : public G4UserEventAction
     void AddGap(G4double de, G4double dl);
     
   private:
+  // this example is based on a sampling calorimeter that uses lead as the absorber material and liquid argon
+  // as the active material.  As with all sampling calorimeters, it looks like a Smith Island cake, with many layers of
+  // absorber and active materials.
+  // we get a signal only from the active material
+  //
+  //
+  // where we store energies deposited by particles into the calorimeter absorber material
     G4double  fEnergyAbs;
+  // where we store energies deposited by particles into the calorimeter active material
     G4double  fEnergyGap;
+  // where we store the total path length of particles in the absorber
     G4double  fTrackLAbs; 
+  // can you guess?
     G4double  fTrackLGap;
 };
 

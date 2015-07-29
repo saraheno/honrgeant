@@ -43,20 +43,25 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
+// !!!!!!!!!!  This is the creator for this class
 B4PrimaryGeneratorAction::B4PrimaryGeneratorAction()
  : G4VUserPrimaryGeneratorAction(),
    fParticleGun(0)
 {
+  // we want to generate one particle per event
   G4int nofParticles = 1;
   fParticleGun = new G4ParticleGun(nofParticles);
 
   // default particle kinematic
   //
+  // we want to make electrons
   G4ParticleDefinition* particleDefinition 
     = G4ParticleTable::GetParticleTable()->FindParticle("e-");
   fParticleGun->SetParticleDefinition(particleDefinition);
+  // we want the direction of the particle to be in the positive z direction
   fParticleGun->SetParticleMomentumDirection(G4ThreeVector(0.,0.,1.));
-  fParticleGun->SetParticleEnergy(50.*MeV);
+  //  We want the energy of the particle to be 50 GeV
+  fParticleGun->SetParticleEnergy(1.*GeV);
 }
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -94,6 +99,10 @@ void B4PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   } 
   
   // Set gun position
+  // here we set the creation point of the particle
+  // in the geometry routine, we define a box called the "world" and the detector and everything must be inside the box
+  // if a particle goes outside the box, it is removed from the particle list and no longer tracked.
+  // here we are creating our particle at x,y,z = 0,0, -z edge of the box
   fParticleGun
     ->SetParticlePosition(G4ThreeVector(0., 0., -worldZHalfLength));
 
